@@ -4,7 +4,7 @@
 #include <stack>
 
 class RPN
-{
+{ 
 private:
     /* data */
 public:
@@ -15,5 +15,5 @@ public:
 		~RPN( void );
 
 		RPN & operator=( RPN & src );
-
 };
+
