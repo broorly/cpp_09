@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/12 15:38:24 by mrafik            #+#    #+#             */
+/*   Updated: 2023/05/12 15:38:25 by mrafik           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(void)
@@ -9,8 +21,7 @@ BitcoinExchange::BitcoinExchange(const std::string& data_name)
 {
 	std::ifstream file(data_name.c_str());
 	if (!file.is_open())
-		//throw
-        std::cout<<"hamid\n"; 
+		throw openFailed();
 	std::string line;
 	while (std::getline(file, line))
 	{
@@ -70,17 +81,17 @@ bool	BitcoinExchange::_checkdate(const std::string& Date) const
 float BitcoinExchange::getExchangeRate(const std::string& date, float value) const
 {
 	if (value < 0)
-		std::cout<<"hamid\n";
+		throw notPositive();
 	if (value > 1000)
-		std::cout<<"hamid\n";
+		throw Toolarge();
 	if (_checkdate(date) == 0)
-		std::cout<<"hamid\n";
+		throw DataError();
 	std::map<std::string, float>::const_iterator it = _exchangeRates.find(date);
 	if (it == _exchangeRates.end())
 	{
 		it = _exchangeRates.upper_bound(date);
 		if (it == _exchangeRates.begin())
-			std::cout<<"hamid\n";
+			throw DataError();
 		--it;
 	}
 	return (it->second);

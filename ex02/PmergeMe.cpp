@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/12 15:38:11 by mrafik            #+#    #+#             */
+/*   Updated: 2023/05/12 15:38:12 by mrafik           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"PmergeMe.hpp"
 
 PmergeMe::PmergeMe(void) : _size(0), _sorted(0)
@@ -210,6 +222,5 @@ void	PmergeMe::printTime(std::string vectorDeque) const
 	}
 	std::cout 
 		<< "Time to process a range of " << _size 
-		<< " elements with std::" << vectorDeque << ": "
-		<< std::fixed << std::setprecision(5) << delta << " ms" << std::endl;
+		<< " elements with std::" << vectorDeque << ": " << delta * 1000 << " us" << std::endl;
 }
