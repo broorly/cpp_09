@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:38:29 by mrafik            #+#    #+#             */
-/*   Updated: 2023/05/12 21:40:22 by mrafik           ###   ########.fr       */
+/*   Updated: 2023/05/12 23:17:02 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,21 @@ int main(int argc, char** argv)
 	{
 		BitcoinExchange	exchange("data.csv");
 		std::string	str;
-		std::getline(inputFile, str);
 		while (std::getline(inputFile, str))
 		{
+			if((str[0] && isalpha(str[0])))
+				std::getline(inputFile, str);
 			std::stringstream ss(str);
 			std::string date;
-			float value;
+			double value;
 			try
 			{
 			if (std::getline(ss, date, '|') && ss >> value )
 			{
 				date.erase(0, date.find_first_not_of(" \t\n\r\f\v"));
 				date.erase(date.find_last_not_of(" \t\n\r\f\v") + 1);
-				float exchangeRate = exchange.getExchangeRate(date, value);
-				float result = value * exchangeRate;
+				double exchangeRate = exchange.getExchangeRate(date, value);
+				double result = value * exchangeRate;
 				std::cout << date << " => " << value << " = " << result << std::endl;
 			}
 			else

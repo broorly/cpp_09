@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:38:38 by mrafik            #+#    #+#             */
-/*   Updated: 2023/05/12 21:48:14 by mrafik           ###   ########.fr       */
+/*   Updated: 2023/05/12 22:29:42 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,29 @@ double RPN :: calculate(std::string expression)
         if (!is_operator(token)) {
             double number;
             try {
-                number = std::stod(token);
+                if(token.size() >= 2)
+                {
+                    for(size_t i=0; i < token.size();i++)
+                    {
+                        if(isnumber(token[i]))
+                        {
+                            number = token[i] - '0';
+                            _numbers.push(number);
+                        }
+                    }
+                }
+                else
+                {
+                    number = std::stod(token);
+                    _numbers.push(number);
+                }
             } catch (...) 
 			{
                throw Error();
             }
-            _numbers.push(number);
         }
 		else {
             if (_numbers.size() < 2) {
-                
                 throw Error();
             }
             double b = _numbers.top();
@@ -81,7 +94,7 @@ double RPN :: calculate(std::string expression)
             _numbers.push(result);
         }
     }
-    if (_numbers.size() != 1) 
+    if (_numbers.size() != 1)
 		throw Error();
     return _numbers.top();
 }
