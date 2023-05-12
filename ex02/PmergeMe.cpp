@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:38:11 by mrafik            #+#    #+#             */
-/*   Updated: 2023/05/12 15:38:12 by mrafik           ###   ########.fr       */
+/*   Updated: 2023/05/12 21:18:55 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ PmergeMe::PmergeMe(void) : _size(0), _sorted(0)
 PmergeMe::PmergeMe(int argc, char **argv) : _size(argc - 1), _sorted(0)
 {
 	_vector = parseArgsVector(argc,argv);
-	verifyDuplicates();
 	_deque = parseArgsDeque(argc,argv);
 	printBeforeAfter();
 	double tBegin = getTime();
@@ -36,17 +35,17 @@ PmergeMe::PmergeMe(int argc, char **argv) : _size(argc - 1), _sorted(0)
 
 	printTime("vector");
 	printTime("deque");
-	return ;
+	return;
 }
 PmergeMe::PmergeMe(const PmergeMe& obj)
 {
 	*this = obj;
-	return ;
+	return;
 }
 
 PmergeMe::~PmergeMe(void)
 {
-	return ;
+	return;
 }
 
 PmergeMe& PmergeMe::operator=(const PmergeMe& Pmer)
@@ -89,7 +88,6 @@ std::vector<int> PmergeMe::parseArgsVector(int argc, char **argv)
 	{
 		arg = argv[i];
 		value = atoi(arg.c_str());
-		std::cout<<value<<"yoooo \n";
 		if (value < 0)
 			throw invalidArgumentError();
 		args.push_back(value);

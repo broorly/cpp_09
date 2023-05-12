@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:38:24 by mrafik            #+#    #+#             */
-/*   Updated: 2023/05/12 15:38:25 by mrafik           ###   ########.fr       */
+/*   Updated: 2023/05/12 21:39:42 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ bool	BitcoinExchange::_checkdate(const std::string& Date) const
 	int year, month, day;
 	char separator;
 	std::istringstream tmp(Date);
+	
 	tmp >> year >> separator >> month >> separator >> day;
 	if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31)
 		return (0);

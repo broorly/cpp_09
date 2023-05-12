@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:38:19 by mrafik            #+#    #+#             */
-/*   Updated: 2023/05/12 15:38:20 by mrafik           ###   ########.fr       */
+/*   Updated: 2023/05/12 18:15:11 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 {
 	if (argc < 2)
 	{
-		std::cerr << "Error" << std::endl;
+		std::cout << "Error" << std::endl;
 		return (1);
 	}
     try
@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 	return (0);
 }

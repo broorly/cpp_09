@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:38:38 by mrafik            #+#    #+#             */
-/*   Updated: 2023/05/12 17:25:18 by mrafik           ###   ########.fr       */
+/*   Updated: 2023/05/12 21:48:14 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ double RPN :: evaluate(double a, double b, std::string op) {
     } else if (op == "*") {
         return a * b;
     } else if (op == "/") {
+        if(b == 0)
+            throw Error();
         return a / b;
     }
 	return(0);
@@ -68,6 +70,7 @@ double RPN :: calculate(std::string expression)
         }
 		else {
             if (_numbers.size() < 2) {
+                
                 throw Error();
             }
             double b = _numbers.top();
