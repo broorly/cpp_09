@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:38:24 by mrafik            #+#    #+#             */
-/*   Updated: 2023/05/12 22:59:08 by mrafik           ###   ########.fr       */
+/*   Updated: 2023/05/13 14:06:59 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,11 @@ float BitcoinExchange::getExchangeRate(const std::string& date, float value) con
 		throw Toolarge();
 	if (_checkdate(date) == 0)
 		throw DataError();
+	for(size_t i=0; i < date.size(); i++)
+	{
+		if(!isnumber(date[i]) && date[i] != '-')
+			throw DataError();
+	}
 	std::map<std::string, float>::const_iterator it = _exchangeRates.find(date);
 	if (it == _exchangeRates.end())
 	{
