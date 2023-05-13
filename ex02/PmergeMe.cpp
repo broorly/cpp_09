@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:38:11 by mrafik            #+#    #+#             */
-/*   Updated: 2023/05/12 21:18:55 by mrafik           ###   ########.fr       */
+/*   Updated: 2023/05/13 17:52:31 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,11 @@ std::deque<int> PmergeMe::parseArgsDeque(int argc, char **argv)
 	std::deque<int>	args;
 	for (int i = 1; i < argc; ++i)
 	{
+		for(int c=0; argv[i][c];c++)
+		{
+			if(!std::isdigit(argv[i][c]))
+			throw invalidArgumentError();
+		}
 		std::string arg = argv[i];
 		int value = atoi(arg.c_str());
 		if (value < 0)

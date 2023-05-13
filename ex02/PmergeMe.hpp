@@ -6,7 +6,7 @@
 /*   By: mrafik <mrafik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:38:14 by mrafik            #+#    #+#             */
-/*   Updated: 2023/05/12 15:38:15 by mrafik           ###   ########.fr       */
+/*   Updated: 2023/05/13 17:50:33 by mrafik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <vector>
 #include <deque>
 #include <set>
+#include <cctype>
 
 class PmergeMe
 {
